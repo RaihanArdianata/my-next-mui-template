@@ -3,13 +3,13 @@ import { Box } from '@mui/system';
 import LandscapeCalender from 'components/calender/LandscapeCalender';
 import GoogleMapsReact from 'components/maps/GoogleMapsReact';
 import { Panolens } from 'components/panorama/Panolens';
-import MiniDrawer from 'layouts/dashboard';
+import Layout from 'layouts/dashboard';
 import React, { useState } from 'react';
 
 function Example() {
   const [isBookMark, setIsBookMark] = useState(false);
   return (
-    <MiniDrawer>
+    <Layout>
       <Grid mb={10} container columns={{ xs: 1, sm: 1, md: 2 }} paddingX={0} justifyContent="center">
         <Grid item xs={1} sm={1} md={1} paddingX={5} gap={10}>
           <Grid container padding={0} >
@@ -96,7 +96,7 @@ function Example() {
           </Grid>
           <Box sx={{ marginTop: 4 }} />
           <Box className='shadow-lg' sx={{ position: 'relative', borderRadius: 3, width: '100%', overflow: 'hidden', padding: 2 }}>
-            <LandscapeCalender/>
+            <LandscapeCalender />
           </Box>
         </Grid>
         <Grid item xs={1} sm={1} md={1} >
@@ -107,11 +107,11 @@ function Example() {
           </Grid>
           <Box sx={{ marginTop: 9 }} />
           <Box className='shadow-lg' sx={{ padding: 2 }}>
-            
+
           </Box>
         </Grid>
       </Grid>
-    </MiniDrawer>
+    </Layout>
   );
 }
 

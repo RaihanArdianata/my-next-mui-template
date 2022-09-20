@@ -10,38 +10,50 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Icon from '@mui/material/Icon';
-import { Avatar, Badge, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import { Avatar, Badge, Button, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search, SearchIconWrapper, StyledInputBase } from './components/SearchElements';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import Link from 'next/link';
 
 const drawerWidth = 100;
 const menu = [
   {
     text: 'widgets',
-    icon: 'widgets'
+    icon: 'widgets',
+    link: 'store/product'
   },
   {
     text: 'event_note',
-    icon: 'event_note'
+    icon: 'event_note',
+    link: 'store/product'
+  },
+  {
+    text: 'inventory_2',
+    icon: 'inventory_2',
+    link: 'store/product'
   },
   {
     text: 'location_on',
-    icon: 'location_on'
+    icon: 'location_on',
+    link: 'store/product'
   },
   {
     text: 'groups',
-    icon: 'groups'
+    icon: 'groups',
+    link: 'store/product'
   },
   {
     text: 'support_agent',
-    icon: 'support_agent'
+    icon: 'support_agent',
+    link: 'store/product'
   },
   {
     text: 'settings',
-    icon: 'settings'
+    icon: 'settings',
+    link: 'store/product'
   },
 ];
 
@@ -165,13 +177,16 @@ export default function PermanentDrawerLeft({ children }) {
               </Badge>
             </IconButton>
             <Divider orientation="vertical" flexItem />
-            <IconButton
+            <Button
               size="large"
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
+              xs={{
+
+              }}
             >
               <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                 <Avatar
@@ -181,25 +196,15 @@ export default function PermanentDrawerLeft({ children }) {
                   variant="rounded"
                 />
                 <Typography fontWeight="bold" letterSpacing={1.5} variant="subtitle2">RaihanArd</Typography>
-                <IconButton
-                  size="medium"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  onClick={handleProfileMenuOpen}
-                  aria-haspopup="true"
-                  color="inherit"
-                  sx={{}}
-                >
-                  <Icon>
-                    expand_more
-                  </Icon>
-                </IconButton>
+
+                <Icon>
+                  expand_more
+                </Icon>
               </Box>
               <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                 <MoreIcon />
               </Box>
-            </IconButton>
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
@@ -219,17 +224,24 @@ export default function PermanentDrawerLeft({ children }) {
         <Toolbar />
         <Divider />
         <List>
-          {menu.map(({ icon }, index) => (
+          {menu.map(({ icon, link }, index) => (
             <ListItem key={index} disablePadding sx={{ display: 'block' }}>
               <ListItemButton sx={{
-                minHeight: 48,
+                display: 'flex',
+                flex: 1,
+                width: '100%',
+                minHeight: 60,
                 justifyContent: 'center',
-                px: 2.5,
-                paddingY: 2.5
+                p: 0,
+                ':hover .material-icons': { color: '#009388' }
               }} >
-                <ListItemIcon sx={{ minWidth: 'fit-content' }}>
-                  <Icon sx={{ ':hover': { color: '#009388' } }}>{icon}</Icon>
-                </ListItemIcon>
+                <Link href={link}>
+                  <a>
+                    <ListItemIcon sx={{ display: 'flex', flex: 1, width: '100%', height: '100%', justifyContent: 'center', }}>
+                      <Icon sx={{}}>{icon}</Icon>
+                    </ListItemIcon>
+                  </a>
+                </Link>
                 {/* <ListItemText primary={text} sx={{opacity: 0}} /> */}
               </ListItemButton>
             </ListItem>
@@ -238,9 +250,9 @@ export default function PermanentDrawerLeft({ children }) {
       </Drawer>
       <Box
         component="main"
-        sx={{ bgcolor: 'background.default', p: 3, display: 'flex', justifyContent: 'center', width: '100%' }}
+        sx={{ bgcolor: '#f5f5f5', p: 3, display: 'flex', justifyContent: 'center', width: '100%' }}
       >
-        <Box maxWidth={{ md: '80%' }}>
+        <Box minWidth={{ width: '90%' }}>
           <Toolbar />
           {
             children
